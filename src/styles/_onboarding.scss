@@ -15,8 +15,8 @@
 .login__credits { position: absolute; top: 18px; left: 25px; display: flex; gap: 6px; margin: 0; color: rgba(97, 116, 137, .62); font-size: 10px; letter-spacing: .02em; }
 .login__credits a { color: inherit; text-decoration: none; }
 .login__credits a:hover { color: $blue; text-decoration: underline; }
-.login__logo { width: 95px; margin-bottom: 65px; }
-.login__panel { padding: 25px 0; }
+.login__logo { width: 95px; margin-bottom: 32px; }
+.login__panel { padding: 8px 0; }
 .login__illustration { display: flex; align-items: center; gap: 12px; padding: 19px; margin-bottom: 23px; border-radius: 11px; background: $pale; color: $blue; font-weight: 600; font-size: 14px; }
 .login__notice { display: flex; align-items: center; justify-content: center; gap: 5px; color: $muted; font-size: 11px; }
 
