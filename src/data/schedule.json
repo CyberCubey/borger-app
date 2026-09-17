@@ -1,0 +1,42 @@
+[
+  {
+    "id": "morning",
+    "time": "Morgen",
+    "title": "Stå op og gør dig klar",
+    "description": "Stå op, børst tænder og tag tøj på. Du kan tage det stille og roligt.",
+    "icon": "sunrise",
+    "done": false
+  },
+  {
+    "id": "breakfast",
+    "time": "Kl. 08.00",
+    "title": "Spis morgenmad",
+    "description": "Spis din morgenmad og drik et glas vand.",
+    "icon": "coffee",
+    "done": false
+  },
+  {
+    "id": "medicine",
+    "time": "Kl. 09.00",
+    "title": "Husk din medicin",
+    "description": "Tag din medicin sammen med et glas vand, hvis det står på din plan.",
+    "icon": "pill",
+    "done": false
+  },
+  {
+    "id": "walk",
+    "time": "Kl. 10.30",
+    "title": "Gå en tur",
+    "description": "Tag jakke og sko på. Gå en lille tur udenfor, gerne sammen med en du kender.",
+    "icon": "footprints",
+    "done": false
+  },
+  {
+    "id": "lunch",
+    "time": "Kl. 12.00",
+    "title": "Frokost",
+    "description": "Spis frokost ved bordet. Du må gerne holde en pause undervejs.",
+    "icon": "utensils",
+    "done": false
+  }
+]
