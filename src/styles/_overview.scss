@@ -20,11 +20,16 @@
 .task-list { display: grid; gap: 10px; }
 .task-card { width: 100%; gap: 14px; text-align: left; padding: 13px 13px 13px 12px; border: 1px solid $line; border-radius: 12px; background: #fff; color: $ink; transition: transform .18s, border-color .18s, box-shadow .18s; }
 .task-card:hover, .task-card:focus-visible { transform: translateY(-2px); border-color: $blue; box-shadow: 0 5px 15px rgba(36, 125, 198, .10); outline: none; }
+.task-card[draggable='true'] { cursor: grab; }
+.task-card[draggable='true']:active { cursor: grabbing; }
+.task-card--dragging { opacity: .65; border-color: $blue; box-shadow: 0 8px 20px rgba(36, 125, 198, .16); }
 .task-card__icon { width: 51px; height: 51px; flex: 0 0 51px; display: grid; place-items: center; border-radius: 10px; color: $blue; background: $pale; }
 .task-card__content { min-width: 0; display: grid; gap: 3px; flex: 1; }
 .task-card__time { display: flex; gap: 4px; align-items: center; color: $muted; font-size: 11px; }
 .task-card__content strong { font-size: 15px; }
 .task-card__content small { color: $green; font-size: 11px; font-weight: 700; }
+.task-card__drag { display: grid; place-items: center; flex: 0 0 28px; min-height: 40px; color: #9aabb8; touch-action: none; }
+.task-card__drag:hover { color: $blue; }
 .task-card__arrow { color: #8ba0b1; }
 .task-card--done { border-color: #a9d7c3; background: #f5fbf8; }
 .task-card--done .task-card__icon { background: $green; color: #fff; }

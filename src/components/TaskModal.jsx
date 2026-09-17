@@ -1,7 +1,16 @@
-import { Check, RotateCcw, Volume2, X } from 'lucide-react';
+import { Check, Clock3, RotateCcw, Volume2, X } from 'lucide-react';
 import { taskIcons } from './icons';
 
-export default function TaskModal({ task, onClose, onToggleTask }) {
+function timeInputValue(time) {
+  const match = time.match(/(\d{2})[.:](\d{2})/);
+  return match ? `${match[1]}:${match[2]}` : '';
+}
+
+function displayTime(value) {
+  return value ? `Kl. ${value.replace(':', '.')}` : 'Vælg tidspunkt';
+}
+
+export default function TaskModal({ task, onClose, onToggleTask, onChangeTime }) {
   const TaskIcon = taskIcons[task.icon];
 
   const speakTask = () => {
@@ -17,6 +26,15 @@ export default function TaskModal({ task, onClose, onToggleTask }) {
         <div className="modal-icon"><TaskIcon size={30} strokeWidth={1.8} /></div>
         <p className="eyebrow">DET SKAL DU GØRE</p>
         <h2 id="task-title">{task.title}</h2>
+        <label className="time-editor">
+          <span><Clock3 size={17} /> Tidspunkt</span>
+          <input
+            type="time"
+            value={timeInputValue(task.time)}
+            aria-label="Vælg tidspunkt"
+            onChange={(event) => onChangeTime(displayTime(event.target.value))}
+          />
+        </label>
         <p className="task-modal__description">{task.description}</p>
         <button className="listen-button" onClick={speakTask}><Volume2 size={19} /> Hør opgaven</button>
         <button className="primary-button" onClick={onToggleTask}>

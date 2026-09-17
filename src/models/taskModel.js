@@ -19,4 +19,20 @@ export function saveTasks(tasks) {
 export function toggleTask(tasks, taskId) {
   return tasks.map((task) => task.id === taskId ? { ...task, done: !task.done } : task);
 }
+
+export function updateTaskTime(tasks, taskId, time) {
+  return tasks.map((task) => task.id === taskId ? { ...task, time } : task);
+}
+
+export function reorderTasks(tasks, draggedId, targetId) {
+  const draggedIndex = tasks.findIndex((task) => task.id === draggedId);
+  const targetIndex = tasks.findIndex((task) => task.id === targetId);
+
+  if (draggedIndex === -1 || targetIndex === -1 || draggedIndex === targetIndex) return tasks;
+
+  const nextTasks = [...tasks];
+  const [draggedTask] = nextTasks.splice(draggedIndex, 1);
+  nextTasks.splice(targetIndex, 0, draggedTask);
+  return nextTasks;
+}
 // #endregion

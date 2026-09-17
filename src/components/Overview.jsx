@@ -1,10 +1,36 @@
+import { useEffect, useRef, useState } from 'react';
 import { CircleHelp, Phone } from 'lucide-react';
 import { getToday } from '../models/dateModel';
 import TaskCard from './TaskCard';
 
-export default function Overview({ tasks, onOpenTask }) {
+export default function Overview({ tasks, onOpenTask, onMoveTask }) {
+  const [draggingTaskId, setDraggingTaskId] = useState(null);
+  const dragTargetId = useRef(null);
   const completedTasks = tasks.filter((task) => task.done).length;
   const { weekday, date } = getToday();
+
+  useEffect(() => {
+    if (!draggingTaskId) return undefined;
+
+    const handlePointerMove = (event) => {
+      event.preventDefault();
+      const taskElement = document.elementFromPoint(event.clientX, event.clientY)?.closest('[data-task-id]');
+      if (taskElement) dragTargetId.current = taskElement.dataset.taskId;
+    };
+
+    const handlePointerUp = () => {
+      if (dragTargetId.current) onMoveTask(draggingTaskId, dragTargetId.current);
+      dragTargetId.current = null;
+      setDraggingTaskId(null);
+    };
+
+    window.addEventListener('pointermove', handlePointerMove, { passive: false });
+    window.addEventListener('pointerup', handlePointerUp);
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
+    };
+  }, [draggingTaskId, onMoveTask]);
   
 
   return (
@@ -27,7 +53,7 @@ export default function Overview({ tasks, onOpenTask }) {
         </section>
 
         <section className="task-list" aria-label="Dagens plan">
-          {tasks.map((task) => <TaskCard key={task.id} task={task} onOpen={() => onOpenTask(task)} />)}
+          {tasks.map((task) => <TaskCard key={task.id} task={task} onOpen={() => onOpenTask(task)} onMove={onMoveTask} onStartDragging={setDraggingTaskId} dragging={task.id === draggingTaskId} />)}
         </section>
       </main>
 

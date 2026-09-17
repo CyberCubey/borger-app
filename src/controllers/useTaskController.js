@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { loadTasks, saveTasks, toggleTask } from '../models/taskModel';
+import { loadTasks, reorderTasks, saveTasks, toggleTask, updateTaskTime } from '../models/taskModel';
 
 export default function useTaskController() {
   const [tasks, setTasks] = useState(loadTasks);
@@ -13,6 +13,14 @@ export default function useTaskController() {
     setTasks((currentTasks) => toggleTask(currentTasks, taskId));
   };
 
-  return { tasks, updateTask };
+  const changeTaskTime = (taskId, time) => {
+    setTasks((currentTasks) => updateTaskTime(currentTasks, taskId, time));
+  };
+
+  const moveTask = (draggedId, targetId) => {
+    setTasks((currentTasks) => reorderTasks(currentTasks, draggedId, targetId));
+  };
+
+  return { tasks, updateTask, changeTaskTime, moveTask };
   // #endregion
 }
