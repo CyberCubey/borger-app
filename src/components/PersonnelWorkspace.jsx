@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, FileText, LogOut, Plus, Search, UserRound, X } from 'lucide-react';
+import mitIdImage from '../../assets/img/mitid.png';
 import schedule from '../data/schedule.json';
 import { fetchResidents } from '../services/residentService';
 
@@ -78,7 +79,7 @@ export default function PersonnelWorkspace({ onLogout }) {
 
   return (
     <div className="personale-shell screen-enter">
-      <header className="personale-topbar"><button className="logout-button" onClick={onLogout}><LogOut size={17} /> Log ud</button><img src="/assets/img/mitid.png" alt="Min dag" /></header>
+      <header className="personale-topbar"><button className="logout-button" onClick={onLogout}><LogOut size={17} /> Log ud</button><img src={mitIdImage} alt="Min dag" /></header>
       {!selectedResident ? (
         <main className="resident-picker">
           <p className="eyebrow">PERSONALEOVERBLIK</p><h1>Find en borger</h1><p className="muted">Søg på navn eller CPR-nummer.</p>

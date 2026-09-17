@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import logoImage from '../../assets/img/image.png';
 
 export default function Splash({ onContinue }) {
   useEffect(() => {
@@ -8,7 +9,7 @@ export default function Splash({ onContinue }) {
 
   return (
     <div className="splash screen-enter" aria-label="Starter Min dag">
-      <img src="/assets/img/image.png" alt="Min dag" />
+      <img src={logoImage} alt="Min dag" />
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import { ChevronRight, LockKeyhole } from 'lucide-react';
+import logoImage from '../../assets/img/image.png';
 
 export default function Login({ onContinue }) {
   return (
     <div className="login screen-enter">
       <p className="login__credits"><a href="https://github.com/CyberCubey/borger-app" target="_blank" rel="noreferrer">GitHub</a><span>·</span><span>CyberCubey</span></p>
-      <img className="login__logo" src="/assets/img/image.png" alt="Min dag" />
+      <img className="login__logo" src={logoImage} alt="Min dag" />
       <div className="login__panel">
         <p className="eyebrow">SIKKER LOG IND</p>
         <h1>Log ind med MitID</h1>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { CircleHelp, Phone } from 'lucide-react';
+import mitIdImage from '../../assets/img/mitid.png';
 import { getToday } from '../models/dateModel';
 import TaskCard from './TaskCard';
 
@@ -37,7 +38,7 @@ export default function Overview({ tasks, onOpenTask, onMoveTask }) {
     <div className="app-frame screen-enter">
       <main className="app-main">
         <header className="topbar">
-          <div className="topbar__brand"><img src="/assets/img/mitid.png" alt="Min dag" /><span>Min dag</span></div>
+          <div className="topbar__brand"><img src={mitIdImage} alt="Min dag" /><span>Min dag</span></div>
           <button className="icon-button" aria-label="Hjælp"><CircleHelp size={22} /></button>
         </header>
 
